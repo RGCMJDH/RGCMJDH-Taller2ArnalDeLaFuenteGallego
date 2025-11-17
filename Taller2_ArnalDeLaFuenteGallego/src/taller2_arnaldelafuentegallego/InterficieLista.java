@@ -14,7 +14,7 @@ abstract interface InterficieLista {
 
     abstract void imprimeCursos();
 
-    abstract Curso eliminaCursos(int numSelec, int modo);
+    abstract void eliminaCursos(String nombre);
     
     abstract void imprimeNombreCursos();
     

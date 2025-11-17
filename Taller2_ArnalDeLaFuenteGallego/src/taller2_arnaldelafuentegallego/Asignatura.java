@@ -11,6 +11,7 @@ import java.util.List;
  * @author alber
  */
 abstract class Asignatura {
+
     // Atributos
     private String nombreAsignatura;
     private String codigoAsignatura;
@@ -31,6 +32,12 @@ abstract class Asignatura {
         return nombreAsignatura;
     }
 
+    public void enseñarEstudiantes() {
+        for (Estudiante e : estudiantesMatriculado) {
+            e.toString();
+        }
+    }
+
     public String getCodigoAsignatura() {
         return codigoAsignatura;
     }
@@ -39,14 +46,13 @@ abstract class Asignatura {
         return estudiantesMatriculado;
     }
 
-    
+    public void darDeBajaEstudiante(Estudiante e) {
+        estudiantesMatriculado.remove(e);
+    }
+
     // Procedimientos
     public void matricularEstudiante(Estudiante e) {
         estudiantesMatriculado.add(e);
-    }
-
-    void darDeBajaEstudiante(Estudiante e) {
-        // elimina un estudiante de la asignatura.
     }
 
     void ordenarEstudiantesPorNombre() {

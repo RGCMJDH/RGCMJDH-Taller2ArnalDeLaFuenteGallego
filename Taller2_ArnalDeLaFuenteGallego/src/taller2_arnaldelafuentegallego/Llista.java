@@ -66,8 +66,8 @@ public class Llista implements InterficieLista {
 
     }
 
-    public Curso buscaCursos(String nom){
-        
+    public Curso buscaCursos(String nom) {
+
         Node temp = apunta;
         int i = 1;
 
@@ -76,15 +76,15 @@ public class Llista implements InterficieLista {
             return null;
         }
 
-            while (!temp.getC1().getNombreCurso().equals(nom) && temp.getSeg() != null) {
-                temp = temp.getSeg();
-                //i++;
-            }
-            return temp.getC1();
+        while (!temp.getC1().getNombreCurso().equals(nom) && temp.getSeg() != null) {
+            temp = temp.getSeg();
+            //i++;
+        }
+        return temp.getC1();
     }
-    
+
     @Override
-    public Curso eliminaCursos(int numSelec, int modo) {
+    public void eliminaCursos(String nombre) {
         Node actual = apunta;
         Node anterior = null;
         int i = 1;
@@ -94,33 +94,19 @@ public class Llista implements InterficieLista {
             return null;
         }
 
-        if (modo == 1) { //busca el nodo con info numSelec
-            while (actual.getSeg() != null && !actual.getC1().equals(numSelec)) {
-                anterior = actual;
-                actual = actual.getSeg();
-                //i++;
-            }
-
-        } else if (modo == 2) { //busca el k-esimo
-
-            while (numSelec != i && actual.getSeg() != null) {
-                anterior = actual;
-                actual = actual.getSeg();
-                i++;
-            }
+        while (actual.getSeg() != null && !actual.getC1().getNombreCurso().equals(nombre)) {
+            anterior = actual;
+            actual = actual.getSeg();
+            //i++;
         }
 
         if (anterior == null) {
             apunta = actual.getSeg();
-
         } else {
             anterior.setSeg(actual.getSeg());
         }
 
         System.out.println("Nodo eliminado -> " + actual.getC1());
-
-        return actual.getC1();
-
     }
 
     // Método para ordenar la lista de menor a mayor

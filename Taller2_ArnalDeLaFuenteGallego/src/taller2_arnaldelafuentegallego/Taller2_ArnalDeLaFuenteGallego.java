@@ -62,21 +62,27 @@ public class Taller2_ArnalDeLaFuenteGallego {
                     String nombreCurso = scan.nextLine();
                     Curso cursoSeleccionado = listaCursos.buscaCursos(nombreCurso);
 
-                    // 2️⃣ Muestras las asignaturas de ESE curso
                     listaCursos.imprimeAsignaturasCurso(cursoSeleccionado);
 
                     System.out.println("Ahora elige una asignatura: ");
                     String nombreAsignatura = scan.nextLine();
 
-                    // 3️⃣ Buscas la asignatura dentro del curso y la guardas
-                    Asignatura asignaturaSeleccionada = cursoSeleccionado.buscaAsignatura(nombreAsignatura);
+                    Asignatura a = cursoSeleccionado.buscaAsignatura(nombreAsignatura);
 
-                    // 4️⃣ A partir de aquí ya trabajas con el objeto Asignatura
+
                     System.out.print("Cuantos alumnos quieres meter en la asignatura: ");
-                    int numAlumnos = Integer.parseInt(scan.nextLine());
+                    int num = scan.nextInt();
+
+                    for (int i = 0; i < num; i++) {
+                        Estudiante e = crearE(a, i);
+                    }
 
                 }
-                case 3 -> {
+                case 3 -> { // Dar de baja un curso
+                    System.out.println("Dime un curso para borrar");
+                    String c = scan.nextLine();
+                    listaCursos.eliminaCursos(c);
+                    System.out.println("Curso borrado");
                 }
                 case 4 -> {
                 }
@@ -94,15 +100,29 @@ public class Taller2_ArnalDeLaFuenteGallego {
         scan.close();
     }
 
-    private Estudiante crear(Asignatura a) {
-        Estudiante e = null;
+    private Estudiante crearE(Asignatura a, int cont) {
+    // vienes de un nextInt(), limpias el salto de línea
+    scan.nextLine();
 
-        return e;
-    }
+    System.out.println("Dame el nombre del alumno");
+    String nom = scan.nextLine();
 
-    // Atributo en tu clase gestora
-// private final List<Curso> cursos = new ArrayList<>();
-// private Scanner scan;
+    System.out.println("Dame el dni");
+    String dni = scan.nextLine();
+
+    // array de asignaturas del alumno: por ahora solo la que has elegido
+    Asignatura[] asignaturasMatriculadas = new Asignatura[1];
+    asignaturasMatriculadas[0] = a;
+
+    Estudiante e = new Estudiante(nom, dni, asignaturasMatriculadas);
+
+    // también metemos al alumno en la lista de la asignatura
+    a.matricularEstudiante(e);
+
+    return e;
+}
+
+
     private void darDeAltaCurso() {
 
         System.out.println("¿Quieres que sea Bachiller (1) o FP (2)?");

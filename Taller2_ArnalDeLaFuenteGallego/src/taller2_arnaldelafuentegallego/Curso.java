@@ -37,7 +37,6 @@ abstract class Curso {
     public String getCodigoAsignatura() {
         return codigoAsignatura;
     }
-    
 
     @Override
     public String toString() {
@@ -50,6 +49,15 @@ abstract class Curso {
             }
         }
         return out;
+    }
+
+    public Asignatura buscaAsignatura(String asig) {
+        for (Asignatura a : asignaturas) {
+            if (a.getNombreAsignatura().equals(asig)) {
+                return a;
+            }
+        }
+        return null; // si no la encuentra
     }
 
     public String imprimeListaAsignaturas() {
