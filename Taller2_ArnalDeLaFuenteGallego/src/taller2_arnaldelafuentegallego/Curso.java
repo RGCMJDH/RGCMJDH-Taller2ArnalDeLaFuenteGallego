@@ -113,8 +113,15 @@ abstract class Curso {
         }
     }
 
-    public void eliminarAsignatura(Asignatura a) {
-        // elimina una asignatura del curso junto con los estudiantes matriculados en ella.
+    public void eliminarAsignatura() {
+       for(Asignatura a: asignaturas){
+           if (asignaturas == null) {
+               System.out.println("Lista asignaturas ya vacia");
+           }
+           a.borrarTodo();
+           
+           
+       }
     }
 
     private void listarAsignaturas() {

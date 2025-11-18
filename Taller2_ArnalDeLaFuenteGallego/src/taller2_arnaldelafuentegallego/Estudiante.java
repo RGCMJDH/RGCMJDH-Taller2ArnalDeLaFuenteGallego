@@ -43,6 +43,24 @@ public class Estudiante {
         return res;
     }
 
+    public void borrarMatriculada(String nombreAsignatura, String codigoAsignatura) {
+        String buscado = nombreAsignatura + " " + codigoAsignatura;
+
+        for (int i = 0; i < asignaturasMatriculadas.length; i++) {
+            if (asignaturasMatriculadas[i].equals(buscado)) {
+
+                // Desplazar todo a la izquierda desde i
+                for (int j = i; j < asignaturasMatriculadas.length - 1; j++) {
+                    asignaturasMatriculadas[j] = asignaturasMatriculadas[j + 1];
+                }
+
+                // Vaciar la última posición
+                asignaturasMatriculadas[asignaturasMatriculadas.length - 1] = null;
+                break; // ya lo hemos borrado, salimos
+            }
+        }
+    }
+
     // Procedimientos
     void matricularEnAsignatura(Asignatura a) {
         // añade la asignatura a su lista de matriculación.

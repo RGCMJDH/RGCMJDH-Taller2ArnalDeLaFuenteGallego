@@ -58,7 +58,6 @@ public class Taller2_ArnalDeLaFuenteGallego {
                     System.out.println("");
                     System.out.println("Elige un curso");
 
-                    // 1️⃣ Guardas el curso que elige el usuario
                     String nombreCurso = scan.nextLine();
                     Curso cursoSeleccionado = listaCursos.buscaCursos(nombreCurso);
 
@@ -69,7 +68,6 @@ public class Taller2_ArnalDeLaFuenteGallego {
 
                     Asignatura a = cursoSeleccionado.buscaAsignatura(nombreAsignatura);
 
-
                     System.out.print("Cuantos alumnos quieres meter en la asignatura: ");
                     int num = scan.nextInt();
 
@@ -79,18 +77,28 @@ public class Taller2_ArnalDeLaFuenteGallego {
 
                 }
                 case 3 -> { // Dar de baja un curso
+                    listaCursos.imprimeNombreCursos();
                     System.out.println("Dime un curso para borrar");
                     String c = scan.nextLine();
+
+                    Curso paBorrar = listaCursos.buscaCursos(c);
+                    paBorrar.eliminarAsignaturas();
                     listaCursos.eliminaCursos(c);
                     System.out.println("Curso borrado");
                 }
-                case 4 -> {
+                case 4 -> {//Dar de baja una asignatura
                 }
                 case 5 -> {
+                    listaCursos.imprimeNombreCursos();
+                    System.out.println("Dime un curso para ver sus asignaturas");
+                    String c = scan.nextLine();
+
+                    Curso ver = listaCursos.buscaCursos(c);
+                    listaCursos.imprimeAsignaturasCurso(ver);
                 }
-                case 6 -> {
+                case 6 -> {// Dada un asignatura, decir a que curso pertenece
                 }
-                case 7 -> {
+                case 7 -> {// Que asignaturas hace el alumno dado
                 }
                 default -> {
                 }
@@ -101,27 +109,26 @@ public class Taller2_ArnalDeLaFuenteGallego {
     }
 
     private Estudiante crearE(Asignatura a, int cont) {
-    // vienes de un nextInt(), limpias el salto de línea
-    scan.nextLine();
+        // vienes de un nextInt(), limpias el salto de línea
+        scan.nextLine();
 
-    System.out.println("Dame el nombre del alumno");
-    String nom = scan.nextLine();
+        System.out.println("Dame el nombre del alumno");
+        String nom = scan.nextLine();
 
-    System.out.println("Dame el dni");
-    String dni = scan.nextLine();
+        System.out.println("Dame el dni");
+        String dni = scan.nextLine();
 
-    // array de asignaturas del alumno: por ahora solo la que has elegido
-    Asignatura[] asignaturasMatriculadas = new Asignatura[1];
-    asignaturasMatriculadas[0] = a;
+        // array de asignaturas del alumno: por ahora solo la que has elegido
+        Asignatura[] asignaturasMatriculadas = new Asignatura[1];
+        asignaturasMatriculadas[0] = a;
 
-    Estudiante e = new Estudiante(nom, dni, asignaturasMatriculadas);
+        Estudiante e = new Estudiante(nom, dni, asignaturasMatriculadas);
 
-    // también metemos al alumno en la lista de la asignatura
-    a.matricularEstudiante(e);
+        // también metemos al alumno en la lista de la asignatura
+        a.matricularEstudiante(e);
 
-    return e;
-}
-
+        return e;
+    }
 
     private void darDeAltaCurso() {
 

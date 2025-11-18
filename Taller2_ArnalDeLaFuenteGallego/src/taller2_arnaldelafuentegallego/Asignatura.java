@@ -45,8 +45,15 @@ abstract class Asignatura {
     public List<Estudiante> getEstudiantesMatriculado() {
         return estudiantesMatriculado;
     }
+    
+    public void borrarTodo(){
+        for(Estudiante e: estudiantesMatriculado){
+            e.borrarMatriculada(nombreAsignatura, codigoAsignatura);
+            estudiantesMatriculado.remove(e); //darDeBajaEstudiante(e);
+        }
+    }
 
-    public void darDeBajaEstudiante(Estudiante e) {
+    private void darDeBajaEstudiante(Estudiante e) {
         estudiantesMatriculado.remove(e);
     }
 

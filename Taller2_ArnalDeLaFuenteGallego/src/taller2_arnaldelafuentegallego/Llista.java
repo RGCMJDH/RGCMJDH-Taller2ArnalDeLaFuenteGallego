@@ -91,7 +91,6 @@ public class Llista implements InterficieLista {
 
         if (apunta == null) {
             System.out.println("La lista está vacía");
-            return null;
         }
 
         while (actual.getSeg() != null && !actual.getC1().getNombreCurso().equals(nombre)) {
