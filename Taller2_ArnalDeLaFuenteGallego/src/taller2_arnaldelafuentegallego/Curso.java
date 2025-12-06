@@ -113,7 +113,7 @@ abstract class Curso {
         }
     }
 
-    public void eliminarAsignatura() {
+    public void eliminarAsignaturas() {
        for(Asignatura a: asignaturas){
            if (asignaturas == null) {
                System.out.println("Lista asignaturas ya vacia");
